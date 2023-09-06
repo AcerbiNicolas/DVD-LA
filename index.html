@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DVD-LA</title>
+  <!-- Bootstrap CSS -->
+  <link rel="shortcut icon" href="assets/imgs/dvd-la-icon.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <form id="forulario">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <h1 class="text-center mt-5">Dividi-la</h1>
+          <img src="assets/imgs/dvd-la-icon.png" alt="" width="100px">
+        </div>
+      </div>
+    </div>
+    <br><br><br>
+    <div class="container border p-3" id="divPantalla1">
+      <div class="row">
+        <div class="col-sm-12 text-center" id="cuantosSon">
+          <h3 class="text-center mt-5">Entre cuántos querés dividir la cuenta?</h3>
+          <input type="text" class="text-center mt-5" placeholder="Minimo 2" id="cantPersonas"></input><br><br>
+          <input type="button" class="btn btn-success" value="Estamos todos" id="estamosTodos">
+        </div>
+      </div>
+    </div>
+    <div class="container border p-3" id="divPantalla2">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <p class="mt-5">
+            <input type="text" placeholder="Ej. Giuli" class="text-center strong" id="nombrePersona"></input>
+            puso
+            $<input type="text" placeholder="1000" class="col-sm-2 text-success strong text-center" id="nombrePersona"></input>
+            en pesos o dolares si tenes un grupo cotizado😎
+          </p>
+          <br>
+          <p class="text-center text-muted" id="pasoAPaso">1/4</p>
+          <input type="button" value="Siguiente persona" class="btn btn-primary">
+
+        </div>
+      </div>
+    </div>
+
+    <br><br><br><br>
+  </form>
+
+  <!-- Empieza el footer-->>
+  <footer class="bg-light text-center text-lg-start">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-12 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Sobre <strong class="text-success">DVD-LA</strong></h5>
+
+          <p>
+            Estoy seguro de que te pasó de juntarte con <strong>5</strong> amigos a comer,
+            compran <strong class="text-danger">2</strong> o <strong class="text-danger">3</strong>
+            y despues llega el momento de dividir la cuenta.
+            <br><strong class="text-danger">UPA pensaste que iba a ser facil, ja</strong><br>
+            Bueno tranqui, te programe la app para que te despreocupes, segui estos pasos
+            y relajate que no te va a faltar un solo peso, ratón.
+          </p>
+          <a class="text-dark" href="assets/pages/instrucciones.html" id="comoFunciona" target="_blank">¿Como
+            funciona?</a>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Copyright:
+      <a class="text-dark" href="https://github.com/AcerbiNicolas" target="_blank">Nicolas Acerbi</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Bootstrap JS -->
+  <script src="assets/js/scripts.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+<script>
+  var cantPersonas;
+  $(document).ready(function () {
+
+    $('#divPantalla2').prop('hidden', true);
+
+    $('#estamosTodos').click(function () {
+      $('#cantPersonas').prop('disabled', true);
+      $('#divPantalla1').prop('hidden', false);
+      $('#divPantalla2').prop('hidden', true);
+
+      cantPersonas = $('#cantPersonas').val()
+      
+      for (let i = 1; i <= cantPersonas; i++) {
+
+        setearPersona(i, cantPersonas);
+        const personas = new Persona();
+        
+      }
+
+      console.log(cantPersonas)
+    })
+
+    $('#cantPersonas').keydown(function (event) {
+      // Allow only backspace, delete, tab, and arrow keys
+      if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39) {
+        return true;
+      }
+      else if ((event.keyCode < 50 || event.keyCode > 57) || (event.keyCode == 49 && $(this).val().length == 0)) {
+        // Remove non-numeric characters or numbers outside the range
+        event.preventDefault();
+        $(this).val($(this).val().replace(/[^1-9]/g, ''));
+      }
+      else {
+        return true;
+      }
+    });
+  });
+
+  function setearPersona(personaNumero, cantPersonas) {
+
+    $("#llenaObjetos").val()
+    $("#llenaObjetos").append("");
+
+  }
+
+
+</script>
+<style>
+  body {
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  #pasoAPaso {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  #forulario {
+    margin: 20px;
+    border: 2px solid rgba(131, 131, 131, 0.438);
+  }
+
+  #comoFunciona {
+    color: rgb(0, 0, 0) !important;
+  }
+</style>
